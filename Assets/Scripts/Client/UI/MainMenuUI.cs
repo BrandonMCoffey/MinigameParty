@@ -10,7 +10,7 @@ namespace Assets.Scripts.Client.UI {
 
         private GameNetPortal _gameNetPortal;
         private ClientGameNetPortal _clientNetPortal;
-
+        
         public const string DefaultIp = "127.0.0.1";
         public const int DefaultPort = 7777;
 
