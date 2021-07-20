@@ -1,6 +1,7 @@
 using Assets.Scripts.Server.Net;
 using Assets.Scripts.Shared.State;
 using UnityEngine;
+using MLAPI;
 
 namespace Assets.Scripts.Server.State {
     public class ServerGameMenuState : GameStateBehaviour {
@@ -19,8 +20,8 @@ namespace Assets.Scripts.Server.State {
             if (!IsServer) {
                 enabled = false;
             } else {
-                //NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-                //NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
+                NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+                NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
             }
         }
 
@@ -35,10 +36,10 @@ namespace Assets.Scripts.Server.State {
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            //if (NetworkManager.Singleton) {
-            //NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
-            //NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnectCallback;
-            //}
+            if (NetworkManager.Singleton) {
+                NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+                NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnectCallback;
+            }
         }
     }
 }
