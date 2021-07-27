@@ -27,10 +27,12 @@ namespace Assets.Scripts.Server.State {
 
         private void OnClientConnected(ulong clientId)
         {
+            // Tell clients to call AddPlayer(clientId) on ActivePlayersUI
         }
 
         private void OnClientDisconnectCallback(ulong clientId)
         {
+            // Tell clients to call RemovePlayer(clientId) on ActivePlayersUI
         }
 
         protected override void OnDestroy()
